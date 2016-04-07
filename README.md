@@ -9,4 +9,4 @@ Use this project in conjunction with [artifactory-app-example][app-example] when
 Tested on Gradle version 2.10, using Wrapper.
 
 [artifactory]: https://www.jfrog.com/open-source/
-[app-example]: http://---
+[app-example]: https://github.com/RobGThai/artifactory-app-example
