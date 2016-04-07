@@ -1,0 +1,82 @@
+buildscript {
+  repositories {
+    jcenter()
+    maven {
+        url"${artifactory_contextUrl}/plugins-release"
+        credentials {
+            username = "${artifactory_user}"
+            password = "${artifactory_password}"
+        }
+    }
+  }
+  dependencies {
+    classpath 'org.jfrog.buildinfo:build-info-extractor-gradle:4.0.0'
+  }
+ }
+
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.artifactory'
+
+repositories {
+    jcenter()
+}
+
+def packageName = 'com.robgthai.helloworld.java_lib'
+def libraryVersion = '0.0.4'
+
+group = packageName
+version = libraryVersion
+
+task sourceJar(type: Jar) {
+  from sourceSets.main.allJava
+  classifier "sources"
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+          groupId packageName
+          version = libraryVersion
+          artifactId 'HelloModule'
+
+          artifact(sourceJar) {
+            // Attach source code in a zip file within jar.
+            classifier "src"
+            extension "zip"
+          }
+          from components.java
+        }
+    }
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.18'
+    testCompile 'junit:junit:4.12'
+}
+
+artifactory {
+    contextUrl = "${artifactory_contextUrl}"
+    publish {
+        repository {
+            repoKey = 'libs-release-local' // The Artifactory repository key to publish to
+            username = "${artifactory_user}" // The publisher user name
+            password = "${artifactory_password}" // The publisher password
+            println("Username ${artifactory_user}")
+            println("Password ${artifactory_password}")
+        }
+        defaults {
+            publications('mavenJava')
+            publishArtifacts = true
+            properties = ['qa.level': 'basic', 'dev.team' : 'core']
+            publishPom = true
+        }
+    }
+    resolve {
+        repoKey = 'jcenter'
+    }
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '2.10'
+}

@@ -1,0 +1,66 @@
+{
+  "version" : "1.0.1",
+  "name" : "java_lib",
+  "number" : "1460030431966",
+  "type" : "GRADLE",
+  "buildAgent" : {
+    "name" : "Gradle",
+    "version" : "2.10"
+  },
+  "agent" : {
+    "name" : "Gradle",
+    "version" : "2.10"
+  },
+  "started" : "2016-04-07T19:00:31.695+0700",
+  "durationMillis" : 1317,
+  "principal" : "RobGThai",
+  "artifactoryPrincipal" : "robgthai",
+  "artifactoryPluginVersion" : "Unknown",
+  "licenseControl" : {
+    "runChecks" : false,
+    "includePublishedArtifacts" : false,
+    "autoDiscover" : false,
+    "scopesList" : "",
+    "licenseViolationsRecipientsList" : ""
+  },
+  "buildRetention" : {
+    "count" : -1,
+    "deleteBuildArtifacts" : true,
+    "buildNumbersNotToBeDiscarded" : [ ]
+  },
+  "modules" : [ {
+    "id" : "com.robgthai.helloworld.java_lib:java_lib:0.0.4",
+    "artifacts" : [ {
+      "type" : "zip",
+      "sha1" : "5daa6aa0c579034e06abea54048ba42bc722710b",
+      "md5" : "810810693f813aeb295ac79b4cd20606",
+      "name" : "HelloModule-0.0.4-src.zip"
+    }, {
+      "type" : "jar",
+      "sha1" : "baf26f39f12c2a57f915a481f54e0ec7293bad85",
+      "md5" : "0d7f0ef7a7409cb0febcc55380cd251a",
+      "name" : "HelloModule-0.0.4.jar"
+    }, {
+      "type" : "pom",
+      "sha1" : "c0450c39bd501b6d7d181556d7ee05057fa87f43",
+      "md5" : "dc608b5de9493d60115b04ac00dc2ff0",
+      "name" : "HelloModule-0.0.4.pom"
+    } ],
+    "excludedArtifacts" : [ ],
+    "dependencies" : [ {
+      "type" : "jar",
+      "sha1" : "b631d286463ced7cc42ee2171fe3beaed2836823",
+      "md5" : "1b1d1af21206ac5ae44cd79a6c04dd92",
+      "id" : "org.slf4j:slf4j-api:1.7.18",
+      "scopes" : [ "compile" ]
+    } ]
+  } ],
+  "governance" : {
+    "blackDuckProperties" : {
+      "runChecks" : false,
+      "includePublishedArtifacts" : false,
+      "autoCreateMissingComponentRequests" : false,
+      "autoDiscardStaleComponentRequests" : false
+    }
+  }
+}
